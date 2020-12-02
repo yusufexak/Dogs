@@ -18,5 +18,9 @@
         <action
             android:id="@+id/action_dogDetailFragment_to_dogListFragment"
             app:destination="@id/dogListFragment" />
+        <argument
+            android:name="dogId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>
