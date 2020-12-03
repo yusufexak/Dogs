@@ -20,8 +20,7 @@ class DogRecyclerAdapter(val dogList:ArrayList<Dog>) :RecyclerView.Adapter<DogRe
     }
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
-        holder.itemView.detailCode.text=dogList.get(position).code
-        holder.itemView.detailDescription.text=dogList.get(position).description
+
     }
 
     override fun getItemCount(): Int {

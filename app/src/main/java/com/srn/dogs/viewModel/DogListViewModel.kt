@@ -20,6 +20,5 @@ class DogListViewModel:ViewModel() {
         dogs.value=dogsList
         dogErrorMessage.value=false
         dogLoading.value=false
-
     }
 }

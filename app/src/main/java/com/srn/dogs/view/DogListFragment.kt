@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.srn.dogs.R
 import com.srn.dogs.adapter.DogRecyclerAdapter
 import com.srn.dogs.viewModel.DogListViewModel
@@ -32,7 +34,40 @@ class DogListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DogListViewModel::class.java)
         viewModel.refleshData()
-    }
+        dogsRecycler.layoutManager=LinearLayoutManager(context)
+        dogsRecycler.adapter=recyclerDogAdapter
+        observeLiveData()
 
+    }
+    fun observeLiveData(){
+        viewModel.dogs.observe(viewLifecycleOwner, Observer {dogs->
+            dogs?.let {
+                dogsRecycler.visibility=View.VISIBLE
+                recyclerDogAdapter.dogListUpdate(dogs)
+            }
+        })
+        viewModel.dogErrorMessage.observe(viewLifecycleOwner, Observer {error->
+            error?.let {
+                if (it){
+                    dogsRecycler.visibility=View.GONE
+                    dogsErrorMessage.visibility=View.VISIBLE
+                }else{
+                    dogsErrorMessage.visibility=View.GONE
+                }
+            }
+        })
+        viewModel.dogLoading.observe(viewLifecycleOwner, Observer {loading->
+            loading?.let {
+                if (it){
+                    dogsRecycler.visibility=View.GONE
+                    dogsErrorMessage.visibility=View.GONE
+                    dogsLoading.visibility=View.VISIBLE
+                }else{
+                    dogsLoading.visibility=View.GONE
+
+                }
+            }
+        })
+    }
 
 }
