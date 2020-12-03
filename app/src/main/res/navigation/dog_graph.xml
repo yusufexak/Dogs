@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/dogListFragment"
-        android:name="com.DogListFragment"
+        android:name="com.srn.dogs.view.DogListFragment"
         android:label="DogListFragment" >
         <action
             android:id="@+id/action_dogListFragment_to_dogDetailFragment"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/dogDetailFragment"
-        android:name="com.DogDetailFragment"
+        android:name="com.srn.dogs.view.DogDetailFragment"
         android:label="DogDetailFragment" >
         <action
             android:id="@+id/action_dogDetailFragment_to_dogListFragment"
