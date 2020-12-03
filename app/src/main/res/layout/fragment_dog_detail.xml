@@ -4,25 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
 
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.DogDetailFragment">
 
-        <Button
-            android:id="@+id/detailButton"
+        <ImageView
+            android:id="@+id/detailDogImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:minHeight="300dp"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/ic_launcher_background">
+
+        </ImageView>
+        <TextView
+
+            android:id="@+id/detailCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Listeye Git"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_editor_absoluteX="128dp">
+            android:layout_below="@+id/detailDogImageView"
+            android:text="200"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorPrimary"
 
-        </Button>
+            ></TextView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+
+            android:id="@+id/detailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detailCode"
+            android:text="description"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/cardview_dark_background"
+
+            ></TextView>
+        
+
+    </RelativeLayout>
 </layout>
