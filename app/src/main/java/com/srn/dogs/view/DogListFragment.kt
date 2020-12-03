@@ -1,4 +1,4 @@
-package com
+package com.srn.dogs.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,10 +25,6 @@ class DogListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listButton.setOnClickListener {
-            val action=DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(3)
-            Navigation.findNavController(it).navigate(action)
-        }
     }
 
 
