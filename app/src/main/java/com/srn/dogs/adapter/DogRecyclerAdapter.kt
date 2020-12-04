@@ -7,8 +7,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.srn.dogs.R
 import com.srn.dogs.model.Dog
+import com.srn.dogs.util.extension.imageDownload
+import com.srn.dogs.util.functions.placeHolderCreate
 import com.srn.dogs.view.DogListFragmentDirections
-import kotlinx.android.synthetic.main.fragment_dog_detail.view.*
+import kotlinx.android.synthetic.main.dog_recycler_row.view.*
 
 class DogRecyclerAdapter(val dogList:ArrayList<Dog>) :RecyclerView.Adapter<DogRecyclerAdapter.DogViewHolder>(){
     class DogViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -26,6 +28,7 @@ class DogRecyclerAdapter(val dogList:ArrayList<Dog>) :RecyclerView.Adapter<DogRe
             val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(0)
             Navigation.findNavController(it).navigate(action)
         }
+        holder.itemView.imageView.imageDownload(dogList[position].imageUrl, placeHolderCreate(holder.itemView.context))
     }
 
     override fun getItemCount(): Int {

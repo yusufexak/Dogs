@@ -44,7 +44,7 @@ class DogDetailFragment : Fragment() {
     fun observeLiveData(){
         viewModel.dog.observe(viewLifecycleOwner, Observer {dog->
             dog?.let {
-                detailCode.text=it.code
+                detailCode.text=it.code.toString()
                 detailDescription.text = it.description
             }
         })
