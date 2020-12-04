@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.srn.dogs.R
 import com.srn.dogs.model.Dog
 import com.srn.dogs.util.extension.imageDownload
-import com.srn.dogs.util.extension.placeHolderCreate
+import com.srn.dogs.util.functions.placeHolderCreate
 import com.srn.dogs.view.DogListFragmentDirections
 import kotlinx.android.synthetic.main.dog_recycler_row.view.*
-import kotlinx.android.synthetic.main.fragment_dog_detail.view.*
 
 class DogRecyclerAdapter(val dogList:ArrayList<Dog>) :RecyclerView.Adapter<DogRecyclerAdapter.DogViewHolder>(){
     class DogViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){

@@ -16,11 +16,3 @@ fun ImageView.imageDownload(url:String?,placaHolder:CircularProgressDrawable){
         .into(this)
 
 }
-
-fun placeHolderCreate(context: Context): CircularProgressDrawable{
-    return CircularProgressDrawable(context).apply {
-        strokeWidth=8f
-        centerRadius=40f
-        start()
-    }
-}
