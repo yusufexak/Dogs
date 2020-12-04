@@ -36,6 +36,14 @@ class DogListFragment : Fragment() {
         viewModel.refleshData()
         dogsRecycler.layoutManager=LinearLayoutManager(context)
         dogsRecycler.adapter=recyclerDogAdapter
+
+        swipeRefleshLayout.setOnRefreshListener {
+            dogsLoading.visibility=View.VISIBLE
+            dogsErrorMessage.visibility=View.GONE
+            dogsRecycler.visibility=View.GONE
+            viewModel.refleshData()
+            swipeRefleshLayout.isRefreshing=false
+        }
         observeLiveData()
 
     }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Dog(
     @SerializedName("code")
-    val code:String?,
+    val code:Int?,
     @SerializedName("description")
     val description:String?,
     @SerializedName("imageUrl")
