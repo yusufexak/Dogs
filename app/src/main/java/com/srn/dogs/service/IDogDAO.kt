@@ -17,5 +17,5 @@ interface IDogDAO {
     suspend fun getDogs(dogId:Int):Dog
 
     @Query("DELETE FROM dog")
-    suspend fun deleteAllDogs(dogId:Int):Dog
+    suspend fun deleteAllDogs():Dog
 }
