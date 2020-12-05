@@ -1,4 +1,4 @@
-package com.srn.dogs.service
+package com.srn.dogs.service.DAO
 
 import androidx.room.Dao
 import androidx.room.Insert

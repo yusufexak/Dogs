@@ -1,4 +1,4 @@
-package com.srn.dogs.service
+package com.srn.dogs.service.DAO
 
 import android.content.Context
 import androidx.room.Database
@@ -9,11 +9,11 @@ import com.srn.dogs.model.Dog
 @Database(entities = arrayOf(Dog::class),version = 1)
 abstract class DogDatabase :RoomDatabase(){
 
-    abstract fun dogDao():IDogDAO
+    abstract fun dogDao(): IDogDAO
 
     companion object{
 
-        @Volatile private  var instance:DogDatabase?=null
+        @Volatile private  var instance: DogDatabase?=null
 
         private val lock =Any()
 

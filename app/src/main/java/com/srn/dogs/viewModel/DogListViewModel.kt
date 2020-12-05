@@ -4,8 +4,9 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.srn.dogs.base.BaseViewModel
 import com.srn.dogs.model.Dog
-import com.srn.dogs.service.DogAPIService
-import com.srn.dogs.service.DogDatabase
+import com.srn.dogs.service.API.DogAPIService
+import com.srn.dogs.service.DAO.DogDatabase
+import com.srn.dogs.util.sharedPreferences.CustomSharedPreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -17,8 +18,9 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
     val dogErrorMessage = MutableLiveData<Boolean>()
     val dogLoading = MutableLiveData<Boolean>()
 
-    private val dogApiService=DogAPIService()
+    private val dogApiService= DogAPIService()
     private val disposable=CompositeDisposable()
+    private val customSH=CustomSharedPreferences(getApplication())
 
     fun refleshData(){
         getDataNetwork()
@@ -55,7 +57,7 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
 
     private fun sqlSave(dogsList:List<Dog>){
         launch {
-            val dao =DogDatabase(getApplication()).dogDao()
+            val dao = DogDatabase(getApplication()).dogDao()
             dao.deleteAllDogs()
             val uuidList= dao.insertAll(*dogsList.toTypedArray())
             var i=0
@@ -65,5 +67,6 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
             }
             dogsVisibil(dogsList)
         }
+        customSH.timeSave(System.nanoTime())
     }
 }
