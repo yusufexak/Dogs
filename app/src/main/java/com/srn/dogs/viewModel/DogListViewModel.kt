@@ -1,6 +1,7 @@
 package com.srn.dogs.viewModel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.srn.dogs.base.BaseViewModel
 import com.srn.dogs.model.Dog
@@ -18,15 +19,29 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
     val dogErrorMessage = MutableLiveData<Boolean>()
     val dogLoading = MutableLiveData<Boolean>()
 
+    private var updateTime = 10*60*1000*1000*1000L
+
     private val dogApiService= DogAPIService()
     private val disposable=CompositeDisposable()
     private val customSH=CustomSharedPreferences(getApplication())
 
     fun refleshData(){
-        getDataNetwork()
-
+        val saveTime = customSH.getTime()
+        if (saveTime !=null && saveTime!=0L && System.nanoTime()-saveTime<updateTime){
+            getDataDatabase()
+        }else {
+            getDataNetwork()
+        }
 
     }
+    private  fun getDataDatabase(){
+        launch {
+            val dogsList= DogDatabase(getApplication()).dogDao().getAllDogs()
+            dogsVisibil(dogsList)
+            Toast.makeText(getApplication(),"Room",Toast.LENGTH_LONG).show()
+        }
+    }
+
     private fun getDataNetwork(){
         dogLoading.value=true
         disposable.add(
@@ -37,6 +52,7 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
                     override fun onSuccess(t: List<Dog>) {
 
                         sqlSave(t)
+                        Toast.makeText(getApplication(),"Network",Toast.LENGTH_LONG).show()
                     }
 
                     override fun onError(e: Throwable) {

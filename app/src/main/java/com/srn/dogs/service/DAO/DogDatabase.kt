@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.srn.dogs.model.Dog
 
-@Database(entities = arrayOf(Dog::class),version = 1)
+@Database(entities = arrayOf(Dog::class),version = 1, exportSchema = false)
 abstract class DogDatabase :RoomDatabase(){
 
     abstract fun dogDao(): IDogDAO
