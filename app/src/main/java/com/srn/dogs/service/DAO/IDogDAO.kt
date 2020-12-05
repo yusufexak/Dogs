@@ -13,7 +13,7 @@ interface IDogDAO {
     @Query("SELECT * FROM dog")
     suspend fun getAllDogs():List<Dog>
 
-    @Query("SELECT * FROM dog WHERE uuid=:dogId")
+    @Query("SELECT * FROM dog WHERE uuid = :dogId")
     suspend fun getDogs(dogId:Int):Dog
 
     @Query("DELETE FROM dog")

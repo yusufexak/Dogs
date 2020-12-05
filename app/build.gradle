@@ -17,6 +17,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    kapt {
+        generateStubs = true
+    }
 
     buildFeatures {
 
@@ -48,7 +51,7 @@ dependencies {
     def glideVersion = '4.11.0'
     def rxJavaVersion = '2.2.8'
     def rxAndroidVersion = '2.1.1'
-    def roomVersion = '2.2.3'
+    def roomVersion = '2.2.5'
     def navVersion = '2.3.0'
     def preference_version = "1.1.1"
 

@@ -7,15 +7,15 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Dog(
-    @ColumnInfo(name="code")
-    @SerializedName("code")
-    val code:Int?,
-    @ColumnInfo(name="description")
-    @SerializedName("description")
-    val description:String?,
-    @ColumnInfo(name="imageUrl")
-    @SerializedName("imageUrl")
-    val imageUrl:String?) {
     @PrimaryKey(autoGenerate = true)
-    var uuid : Int =0
-}
+    val uuid : Int ,
+    @SerializedName("code")
+    @ColumnInfo(name="code")
+    val code:Int?,
+    @SerializedName("description")
+    @ColumnInfo(name="description")
+    val description:String?,
+    @SerializedName("imageUrl")
+    @ColumnInfo(name="imageUrl")
+    val imageUrl:String?
+    )
