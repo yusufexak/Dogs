@@ -19,7 +19,7 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
     val dogErrorMessage = MutableLiveData<Boolean>()
     val dogLoading = MutableLiveData<Boolean>()
 
-    private var updateTime = 10*60*1000*1000*1000L
+    private var updateTime = 0.2*60*1000*1000*1000L
 
     private val dogApiService= DogAPIService()
     private val disposable=CompositeDisposable()
@@ -34,6 +34,10 @@ class DogListViewModel(application: Application):BaseViewModel(application) {
         }
 
     }
+    fun refleshFromNetwork(){
+        getDataNetwork()
+    }
+
     private  fun getDataDatabase(){
         launch {
             val dogsList= DogDatabase(getApplication()).dogDao().getAllDogs()
