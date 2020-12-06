@@ -8,14 +8,14 @@ import com.google.gson.annotations.SerializedName
 @Entity
 data class Dog(
     @PrimaryKey(autoGenerate = true)
-    val uuid : Int ,
+    var uuid: Int,
     @SerializedName("code")
     @ColumnInfo(name="code")
-    val code:Int?,
+    val code: Int?,
     @SerializedName("description")
     @ColumnInfo(name="description")
     val description:String?,
     @SerializedName("imageUrl")
     @ColumnInfo(name="imageUrl")
-    val imageUrl:String?
-    )
+    val _imageUrl:String?
+)

@@ -28,7 +28,7 @@ class DogRecyclerAdapter(val dogList:ArrayList<Dog>) :RecyclerView.Adapter<DogRe
             val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(0)
             Navigation.findNavController(it).navigate(action)
         }
-        holder.itemView.imageView.imageDownload(dogList[position].imageUrl, placeHolderCreate(holder.itemView.context))
+        holder.itemView.imageView.imageDownload(dogList[position]._imageUrl, placeHolderCreate(holder.itemView.context))
     }
 
     override fun getItemCount(): Int {
