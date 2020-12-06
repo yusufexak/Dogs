@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.srn.dogs.R
+import com.srn.dogs.util.extension.imageDownload
+import com.srn.dogs.util.functions.placeHolderCreate
 import com.srn.dogs.viewModel.DogDetailViewModel
 import kotlinx.android.synthetic.main.fragment_dog_detail.*
 
@@ -31,13 +33,14 @@ class DogDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel= ViewModelProviders.of(this).get(DogDetailViewModel::class.java)
-        viewModel.roomDataGet()
-
         arguments?.let {
             dogId= DogDetailFragmentArgs.fromBundle(it).dogId
-            println(dogId)
         }
+
+        viewModel= ViewModelProviders.of(this).get(DogDetailViewModel::class.java)
+        viewModel.roomDataGet(dogId)
+
+
         observeLiveData()
 
     }
@@ -46,6 +49,9 @@ class DogDetailFragment : Fragment() {
             dog?.let {
                 detailCode.text=it.code.toString()
                 detailDescription.text = it.description
+                context?.let {
+                    detailDogImageView.imageDownload(dog._imageUrl, placeHolderCreate(it))
+                }
             }
         })
     }

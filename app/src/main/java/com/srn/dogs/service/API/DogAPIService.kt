@@ -1,4 +1,4 @@
-package com.srn.dogs.service
+package com.srn.dogs.service.API
 
 import com.srn.dogs.model.Dog
 import io.reactivex.Single

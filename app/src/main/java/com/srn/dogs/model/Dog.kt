@@ -1,12 +1,21 @@
 package com.srn.dogs.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Dog(
+    @PrimaryKey(autoGenerate = true)
+    var uuid: Int,
     @SerializedName("code")
-    val code:Int?,
+    @ColumnInfo(name="code")
+    val code: Int?,
     @SerializedName("description")
+    @ColumnInfo(name="description")
     val description:String?,
     @SerializedName("imageUrl")
-    val imageUrl:String?) {
-}
+    @ColumnInfo(name="imageUrl")
+    val _imageUrl:String?
+)

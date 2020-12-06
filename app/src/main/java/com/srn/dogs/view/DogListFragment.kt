@@ -41,7 +41,7 @@ class DogListFragment : Fragment() {
             dogsLoading.visibility=View.VISIBLE
             dogsErrorMessage.visibility=View.GONE
             dogsRecycler.visibility=View.GONE
-            viewModel.refleshData()
+            viewModel.refleshFromNetwork()
             swipeRefleshLayout.isRefreshing=false
         }
         observeLiveData()
