@@ -25,7 +25,7 @@ class DogRecyclerAdapter(val dogList:ArrayList<Dog>) :RecyclerView.Adapter<DogRe
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(0)
+            val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dogList.get(position).uuid)
             Navigation.findNavController(it).navigate(action)
         }
         holder.itemView.imageView.imageDownload(dogList[position]._imageUrl, placeHolderCreate(holder.itemView.context))
