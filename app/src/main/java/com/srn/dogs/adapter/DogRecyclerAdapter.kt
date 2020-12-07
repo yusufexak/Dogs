@@ -15,7 +15,7 @@ import com.srn.dogs.view.DogListFragmentDirections
 import kotlinx.android.synthetic.main.dog_recycler_row.view.*
 import java.util.*
 
-class DogRecyclerAdapter(val dogList: ArrayList<Dog>) :RecyclerView.Adapter<DogRecyclerAdapter.DogViewHolder>(){
+class DogRecyclerAdapter(val dogList: ArrayList<Dog>) :RecyclerView.Adapter<DogRecyclerAdapter.DogViewHolder>(),IDogClickListener{
     class DogViewHolder(var view: DogRecyclerRowBinding):RecyclerView.ViewHolder(view.root){
 
     }
@@ -29,6 +29,7 @@ class DogRecyclerAdapter(val dogList: ArrayList<Dog>) :RecyclerView.Adapter<DogR
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         holder.view.dog=dogList[position]
+        holder.view.listener=this
         /*
         holder.itemView.setOnClickListener {
             val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(dogList.get(position).uuid)
@@ -46,5 +47,14 @@ class DogRecyclerAdapter(val dogList: ArrayList<Dog>) :RecyclerView.Adapter<DogR
         dogList.clear()
         dogList.addAll(newDogList)
         notifyDataSetChanged()
+    }
+
+    override fun dogClick(view: View) {
+        val uuid =view.dogUuid.text.toString().toIntOrNull()
+        uuid?.let {
+
+            val action = DogListFragmentDirections.actionDogListFragmentToDogDetailFragment(it)
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 }
