@@ -6,6 +6,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.srn.dogs.R
+import com.srn.dogs.util.functions.placeHolderCreate
 
 fun ImageView.imageDownload(url:String?,placaHolder:CircularProgressDrawable){
     val options =RequestOptions().placeholder(placaHolder).error(R.mipmap.ic_launcher)
@@ -16,3 +17,5 @@ fun ImageView.imageDownload(url:String?,placaHolder:CircularProgressDrawable){
         .into(this)
 
 }
+
+
